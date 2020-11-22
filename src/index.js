@@ -1,14 +1,15 @@
 import './styles.css';
 import OnFeatchImagesAPI from './js/api'
 import markupImages from './components/card.hbs'
+
 var debounce = require('lodash.debounce');
-var InfiniteScroll = require('infinite-scroll')
+
 
 const refs = {
     serchForm: document.querySelector(`#search-form`),
     gallery: document.querySelector(`.gallery`),
     btnLoadMore: document.querySelector(`#load-more`),
-    
+   
 }
 refs.serchForm.addEventListener(`input`, debounce(onSerchImages, 300))
 refs.btnLoadMore.addEventListener(`click`, btnLoadMore )
@@ -21,25 +22,25 @@ function onSerchImages(e) {
     newsApiService.resetPage();
     newsApiService.featchImages().then(appendImagesMarkup)
     clearImagesContainer()
-   
+
 }
 
  function btnLoadMore(e) {
-    newsApiService.featchImages().then(appendImagesMarkup)
-    scroll()
+    e.preventDefault()
+    newsApiService.featchImages().then(appendImagesMarkup).then( scroll())
     
+   
 
 }
- function scroll() {
-    const { y } = refs.gallery.lastElementChild.getBoundingClientRect()
-  
-    setTimeout(() => {
-       window.scrollTo({
-           top: y + 300,
-           behavior: 'smooth'
-       })
-     }, 500);
-      
+  function scroll() {
+      const { y } = refs.gallery.lastElementChild.getBoundingClientRect()
+       setTimeout(() => {
+        window.scrollTo( {
+        top: y + 300,
+        behavior: 'smooth',
+        });
+       }, 300);
+
 }
 
 function appendImagesMarkup(hits) {

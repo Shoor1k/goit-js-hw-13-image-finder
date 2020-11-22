@@ -26,3 +26,6 @@ html {
 .stats-item:not(:first-child) {
   margin-left: 20px;
 }
+.load-more {
+  position: fixed;
+}
