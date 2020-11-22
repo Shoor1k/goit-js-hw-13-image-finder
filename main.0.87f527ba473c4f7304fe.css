@@ -1,0 +1,1 @@
+html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}.gallery{display:flex;flex-wrap:wrap}.photo-card{margin:10px}.photo-card img{height:400px;width:600px;object-fit:cover}.stats{display:flex;justify-content:center}.stats-item:not(:first-child){margin-left:20px}.load-more{position:fixed}
